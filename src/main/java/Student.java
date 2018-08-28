@@ -1,5 +1,4 @@
 import java.util.Arrays;
-import java.util.Map;
 
 public class Student{
 
@@ -12,11 +11,6 @@ public class Student{
 
     public Student(){
 
-    }
-    public Student(String firstName, String lastName, Map<String, String> hometownAndStateOrCountry) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.hometown = hometown;
     }
 
     public String getFirstName() {

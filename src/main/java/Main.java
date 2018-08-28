@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
+
 public class Main {
     static ArrayList<Student> listOfStudents = new ArrayList();
 
@@ -16,7 +17,7 @@ public class Main {
             System.out.println(s.toString());
         }
 
-        /*ArrayList<Student> temp;
+        ArrayList<Student> temp;
         temp = findBy("green", CategoryTypes.COLOR);
         Collections.sort(temp, new SortByName());
         System.out.println("Student with favorite color green: ");
@@ -29,7 +30,7 @@ public class Main {
         System.out.println("Students with the hometown rochester: ");
         for (Student s : temp) {
             System.out.println(s.getFirstName());
-        }*/
+        }
     }
 
     public static void parseFile(String fileToParse) throws IOException{
