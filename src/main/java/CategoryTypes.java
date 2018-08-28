@@ -1,0 +1,3 @@
+public enum CategoryTypes {
+    FIRSTNAME, LASTNAME, COLOR, PETS, HOMETOWN, MOVIES, SHOESIZE;
+}
