@@ -17,17 +17,9 @@ public class Main {
         ArrayList<Student> results;
         int typeValue;
         Scanner scanner = new Scanner(System.in);
-        String menu = "Find By Options:" + "\n" +
-                "   0(First Name) " + "\n" +
-                "   1(Last Name)" + "\n" +
-                "   2(Color) " + "\n" +
-                "   3(Pets)" + "\n" +
-                "   4(Hometown)" + "\n" +
-                "   5(Movie)" + "\n" +
-                "   6(Shoe Size)" + "\n" +
-                "   -1(Exit)";
+
         while (true) {
-            System.out.println(menu);
+            showMenu();
             do {
                 System.out.println("Enter a value from the menu:");
                 while (!scanner.hasNextInt()) {
@@ -39,13 +31,14 @@ public class Main {
             if (typeValue == -1) {
                 System.exit(1);
             }
+
             System.out.println("Enter value to search by: ");
             String value = scanner.next();
 
             results = findBy(value, categoryValues[typeValue]);
 
             if (results == null || results.size() == 0) {
-                System.out.println("No Results");
+                System.out.println("/nNo Results");
             } else {
                 System.out.println("Results("+ results.size()+ "): ");
                 System.out.println("-----------------------------------------------");
@@ -58,6 +51,8 @@ public class Main {
         }
 
     }
+
+
 
     public static void parseFile(String fileToParse) throws IOException{
 
@@ -84,6 +79,8 @@ public class Main {
             listOfStudents.add(student);
         }
     }
+
+
 
     public static String[] parsePets(String pets){
         if(pets != null){
@@ -161,6 +158,24 @@ public class Main {
                 System.out.println("Incorrect Type");
         }
         return null;
+    }
+
+
+    public static void showMenu() {
+        System.out.println(
+                "Find By Options:" + "\n" +
+                        "   0(First Name) " + "\n" +
+                        "   1(Last Name)" + "\n" +
+                        "   2(Color) " + "\n" +
+                        "   3(Pets)" + "\n" +
+                        "   4(Hometown)" + "\n" +
+                        "   5(Movie)" + "\n" +
+                        "   6(Shoe Size)" + "\n" +
+                        "   -1(Exit)"
+
+        );
+
+
     }
 
 }
