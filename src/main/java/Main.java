@@ -4,24 +4,57 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
 
 
 public class Main {
     static ArrayList<Student> listOfStudents = new ArrayList();
-
+    static CategoryTypes[] categoryValues = CategoryTypes.values();
     public static void main(String[] args) throws IOException {
 
         parseFile("src/main/Student.csv");
 
-       /* for (Student s: listOfStudents) {
-            System.out.println(s.toString());
-        }
-        */
-        ArrayList<Student> temp;
-        temp = findBy("blue", CategoryTypes.COLOR);
-        Collections.sort(temp, new SortByName());
-        for (Student s : temp) {
-            System.out.println(s.toString());
+        ArrayList<Student> results;
+        int typeValue;
+        Scanner scanner = new Scanner(System.in);
+        String menu = "Find By Options:" + "\n" +
+                "   0(First Name) " + "\n" +
+                "   1(Last Name)" + "\n" +
+                "   2(Color) " + "\n" +
+                "   3(Pets)" + "\n" +
+                "   4(Hometown)" + "\n" +
+                "   5(Movie)" + "\n" +
+                "   6(Shoe Size)" + "\n" +
+                "   -1(Exit)";
+        while (true) {
+            System.out.println(menu);
+            do {
+                System.out.println("Enter a value from the menu:");
+                while (!scanner.hasNextInt()) {
+                    System.out.println("Invalid value, try again.");
+                    scanner.next(); // this is important!
+                }
+                typeValue = scanner.nextInt();
+            } while (typeValue < -1 || typeValue > 6);
+            if (typeValue == -1) {
+                System.exit(1);
+            }
+            System.out.println("Enter value to search by: ");
+            String value = scanner.next();
+
+            results = findBy(value, categoryValues[typeValue]);
+
+            if (results == null || results.size() == 0) {
+                System.out.println("No Results");
+            } else {
+                System.out.println("Results("+ results.size()+ "): ");
+                System.out.println("-----------------------------------------------");
+                Collections.sort(results, new SortByName());
+                for (Student s : results) {
+                    System.out.println(s.toString());
+                }
+                System.out.println("-----------------------------------------------");
+            }
         }
 
     }
