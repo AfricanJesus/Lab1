@@ -11,31 +11,24 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        parseFile("/Users/rn9627cw/Desktop/CS 385/Lab 1/src/main/Student.csv");
+        parseFile("src/main/Student.csv");
 
-        for (Student s: listOfStudents) {
+       /* for (Student s: listOfStudents) {
+            System.out.println(s.toString());
+        }
+        */
+        ArrayList<Student> temp;
+        temp = findBy("blue", CategoryTypes.COLOR);
+        Collections.sort(temp, new SortByName());
+        for (Student s : temp) {
             System.out.println(s.toString());
         }
 
-        ArrayList<Student> temp;
-        temp = findBy("green", CategoryTypes.COLOR);
-        Collections.sort(temp, new SortByName());
-        System.out.println("Student with favorite color green: ");
-        for (Student s : temp) {
-            System.out.println(s.getFirstName());
-        }
-
-        temp = findBy("MN", CategoryTypes.COLOR);
-        //Collections.sort(temp, new SortByName());
-        System.out.println("Students with the hometown rochester: ");
-        for (Student s : temp) {
-            System.out.println(s.getFirstName());
-        }
     }
 
     public static void parseFile(String fileToParse) throws IOException{
 
-        String[] studentInfo = null;
+        String[] studentInfo;
 
         CSVReader reader = new CSVReader(new FileReader(fileToParse));
         reader.readNext();
@@ -58,6 +51,7 @@ public class Main {
             listOfStudents.add(student);
         }
     }
+
     public static String[] parsePets(String pets){
         if(pets != null){
             if(pets.contains(",")){
@@ -78,21 +72,21 @@ public class Main {
         switch(type){
             case FIRSTNAME:
                 for (Student s: listOfStudents) {
-                    if(s.getFirstName().contains(value.toLowerCase())){
+                    if(s.getFirstName() != null && s.getFirstName().contains(value.toLowerCase())){
                         students.add(s);
                     }
                 }
                 return students;
             case LASTNAME:
                 for (Student s: listOfStudents) {
-                    if(s.getLastName().contains(value.toLowerCase())){
+                    if(s.getLastName() != null && s.getLastName().contains(value.toLowerCase())){
                         students.add(s);
                     }
                 }
                 return students;
             case COLOR:
                 for (Student s: listOfStudents) {
-                    if(s.getFavColor().contains(value.toLowerCase())){
+                    if(s.getFavColor() != null && s.getFavColor().contains(value.toLowerCase())){
                         students.add(s);
                     }
                 }
@@ -100,30 +94,32 @@ public class Main {
             case PETS:
                 for(Student s: listOfStudents){
                     String[] pets = s.getPets();
-                    for(int i = 0; i < pets.length; i++){
-                        if (pets[i].contains(value.toLowerCase())) {
-                            students.add(s);
+                    if(pets != null) {
+                        for (int i = 0; i < pets.length; i++) {
+                            if (pets[i].contains(value.toLowerCase())) {
+                                students.add(s);
+                            }
                         }
                     }
                 }
                 return students;
             case HOMETOWN:
                 for (Student s: listOfStudents) {
-                    if(s.getHometown().contains(value.toLowerCase())){
+                    if(s.getHometown() != null && s.getHometown().contains(value.toLowerCase())){
                         students.add(s);
                     }
                 }
                 return students;
             case MOVIES:
                 for (Student s: listOfStudents) {
-                    if(s.getFavMovies().contains(value.toLowerCase())){
+                    if(s.getFavMovies() != null && s.getFavMovies().contains(value.toLowerCase())){
                         students.add(s);
                     }
                 }
                 return students;
             case SHOESIZE:
                 for (Student s: listOfStudents) {
-                    if(s.getShoeSize().contains(value.toLowerCase())){
+                    if(s.getShoeSize() != null && s.getShoeSize().contentEquals(value.toLowerCase())){
                         students.add(s);
                     }
                 }
