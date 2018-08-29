@@ -72,13 +72,13 @@ public class Student{
     @Override
     public String toString() {
         return
-                "First Name: " + firstName + '\n' +
-                " Last Name: " + lastName + '\n' +
-                " Favorite Color: " + favColor + '\n' +
-                " Pets: " + Arrays.toString(pets) + '\n' +
-                " Hometown: " + hometown + '\n' +
-                " Favorite Movie: " + favMovies + '\n' +
-                " Shoe Size: " + shoeSize + '\n';
+                "First Name: "      + firstName                 + '\n' +
+                " Last Name: "      + lastName                  + '\n' +
+                " Favorite Color: " + favColor        + '\n'    +
+                " Pets: "           + Arrays.toString(pets)     + '\n' +
+                " Hometown: "       + hometown + '\n'           +
+                " Favorite Movie: " + favMovies                 + '\n' +
+                " Shoe Size: "      + shoeSize                  + '\n';
     }
 
 }

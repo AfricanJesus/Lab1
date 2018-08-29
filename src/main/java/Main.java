@@ -32,13 +32,16 @@ public class Main {
                 System.exit(1);
             }
 
+
+            //Get value from user to search.
             System.out.println("Enter value to search by: ");
             String value = scanner.next();
 
+            //Store results found by calling FindbyMethod.
             results = findBy(value, categoryValues[typeValue]);
-
+            //Validate Results
             if (results == null || results.size() == 0) {
-                System.out.println("/nNo Results");
+                System.out.println("No Results");
             } else {
                 System.out.println("Results("+ results.size()+ "): ");
                 System.out.println("-----------------------------------------------");
@@ -52,8 +55,7 @@ public class Main {
 
     }
 
-
-
+    //OpenCSV library is used to read file and parse.
     public static void parseFile(String fileToParse) throws IOException{
 
         String[] studentInfo;
@@ -67,7 +69,7 @@ public class Main {
                     studentInfo[i] = null;
                 }
             }
-
+            //Initalize Student object
             Student student = new Student();
             student.setFirstName(studentInfo[0]);
             student.setLastName(studentInfo[1]);
@@ -81,7 +83,7 @@ public class Main {
     }
 
 
-
+    //Parse pet category.
     public static String[] parsePets(String pets){
         if(pets != null){
             if(pets.contains(",")){
@@ -95,6 +97,9 @@ public class Main {
         }else
             return null;
     }
+
+
+
 
     public static ArrayList<Student> findBy(String value, CategoryTypes type){
         ArrayList<Student> students = new ArrayList();
@@ -163,15 +168,15 @@ public class Main {
 
     public static void showMenu() {
         System.out.println(
-                "Find By Options:" + "\n" +
-                        "   0(First Name) " + "\n" +
-                        "   1(Last Name)" + "\n" +
-                        "   2(Color) " + "\n" +
-                        "   3(Pets)" + "\n" +
-                        "   4(Hometown)" + "\n" +
-                        "   5(Movie)" + "\n" +
-                        "   6(Shoe Size)" + "\n" +
-                        "   -1(Exit)"
+                "Find By Options:" + "\n"        +
+                        "   0 -- First Name "    + "\n" +
+                        "   1 -- Last Name"     + "\n" +
+                        "   2 -- Color "         + "\n" +
+                        "   3 -- Pets"           + "\n" +
+                        "   4 -- Hometown"       + "\n" +
+                        "   5 -- Movie"          + "\n" +
+                        "   6 -- Shoe Size"      + "\n" +
+                        "  -1 -- Exit Program"
 
         );
 
