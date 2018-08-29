@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class Main {
     static ArrayList<Student> listOfStudents = new ArrayList();
     static CategoryTypes[] categoryValues = CategoryTypes.values();
+
     public static void main(String[] args) throws IOException {
 
         parseFile("src/main/Student.csv");
